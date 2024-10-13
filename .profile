@@ -8,23 +8,15 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+if [ -d "$HOME/.dotfiles" ]; then
+    export DOTFILES="$HOME/.dotfiles"
+fi
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
-
-if [ -f "$HOME/.dotfiles" ]; then
-    DOTFILES="$HOME/.dotfiles"
-fi
-
-# run bashrc from dotfiles
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$DOTFILES/bash/bashrc" ]; then
-	. "$DOTFILES/bash/bashrc"
+    . "$HOME/.bashrc"
     fi
 fi
 
